@@ -1,0 +1,61 @@
+# Default configuration for RL recommendation systems
+
+# Data configuration
+data:
+  test_ratio: 0.2
+  val_ratio: 0.1
+  sparsity: 0.8
+
+# Training configuration
+training:
+  n_episodes: 1000
+  k: 10
+  eval_freq: 100
+
+# Evaluation configuration
+evaluation:
+  k: 10
+  n_eval_episodes: 100
+
+# Model configurations
+models:
+  - name: "q_learning"
+    type: "q_learning"
+    params:
+      learning_rate: 0.1
+      discount_factor: 0.9
+      epsilon: 0.1
+      epsilon_decay: 0.995
+      min_epsilon: 0.01
+
+  - name: "sarsa"
+    type: "sarsa"
+    params:
+      learning_rate: 0.1
+      discount_factor: 0.9
+      epsilon: 0.1
+      epsilon_decay: 0.995
+      min_epsilon: 0.01
+
+  - name: "dqn"
+    type: "dqn"
+    params:
+      embedding_dim: 64
+      hidden_dim: 128
+      learning_rate: 0.001
+      discount_factor: 0.9
+      epsilon: 0.1
+      epsilon_decay: 0.995
+      min_epsilon: 0.01
+      buffer_size: 10000
+      batch_size: 32
+      target_update_freq: 100
+
+  - name: "contextual_bandit"
+    type: "contextual_bandit"
+    params:
+      context_dim: 10
+      learning_rate: 0.01
+      epsilon: 0.1
+      epsilon_decay: 0.995
+      min_epsilon: 0.01
